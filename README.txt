@@ -1,7 +1,5 @@
-Final Project - team 16
-TEAM MEMBER：
-XIANG CHEN  201992538
-YUE XING    201466372
+Final Project
+
 
 Please use sublime-text or other HTML editor to open the "Source Code-Final Project" folder, run the "Project-team16.html", 
 
