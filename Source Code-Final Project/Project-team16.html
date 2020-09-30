@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        @keyframes opacity {
+            from {
+                opacity: 0;
+            }
+            23% {
+                opacity: 1;
+            }
+            46% {
+                opacity: 0;
+            }
+            69% {
+                opacity: 1;
+            }
+            92% {
+                opacity: 0;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        html, body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            font-family: "Segoe UI Light","Segoe UI","Microsoft Jhenghei","微软雅黑",sans-serif;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+        }
+    
+        html {
+            background-color: black;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+        }
+        .FrontAim {
+            position: absolute;
+            width: 56px;
+            height: 56px;
+            left: 50%;
+            top: 50%;
+            background-image: url(./FrontAim.png);
+            pointer-events: none;
+            transform-origin: center center;
+            transform: translate(-50%, -50%) scale(.5, .5);
+        }
+        .Team {
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #13ADF0;
+            top: 5px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+        }
+        .Mark {
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #13ADF0;
+            top: 45px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+        }
+        .Mark span {
+            font-style: italic;
+        }
+        .time {
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #13ADF0;
+            top: 85px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+        }
+        .time span {
+            font-style: italic;
+        }
+
+        .difficulty{
+
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #F93B08  ;
+            top: 125px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+
+        }
+
+        .slider{
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #13ADF0;
+            top: 165px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+
+        }
+
+         .slider1{
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #13ADF0;
+            top: 205px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+
+        }
+
+        .ButtonL1{
+
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #ff0000;
+            top: 245px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+
+        }
+        .ButtonL2{
+
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            position: absolute;
+            color: #64F013;
+            top: 285px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+
+        }
+       
+
+        .Forward{
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            position: absolute;
+            color: #13ADF0;
+            top: 325px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+
+
+        }
+        .Back{
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            position: absolute;
+            color: #13ADF0;
+            top: 365px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+        }
+       
+
+        
+        .ButtonL3{
+        
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            position: absolute;
+            color: #13ADF0;
+            top: 405px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+        }
+        .Note{
+        
+            width: 780px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            position: absolute;
+            color: #ff0000;
+            top: 445px;
+            left: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px white;
+        }
+
+       
+
+        .prompt {
+            width: 300px;
+            height: 60px;
+            line-height: 30px;
+            font-size: 30px;
+            color: #5eefff;
+            text-shadow: 1px 1px black;
+            background-image: url(./arrow.png);
+            background-position: 93px 13px;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .animate {
+            animation-name: opacity;
+            animation-duration: 3s;
+        }
+    </style>
+
+    <script id="vertex-shader" type="x-shader/vertex-shader">
+
+        attribute vec3 aPosition;//Vertex position
+        attribute vec3 aColor;//Vertex color
+        attribute vec4 aFrameColor;
+        attribute vec2 aTexCoord;
+        
+        attribute  vec3 aa_Normal;//Surface normal
+       
+        // projectionMatrix
+        uniform mat4 u_Pro_Matrix;
+
+        //modelviewMatrix1
+        uniform mat4 u_Model_Matrix;
+        uniform mat4 u_View_Matrix;
+
+        //Fog intensity and color
+        uniform float u_fogintensity;
+        uniform vec4 u_fogColor;
+     
+        // Red Light
+        uniform vec4 ambient_1,diffuse_1,specular_1;
+        uniform vec4 Light1Pos;
+        uniform float Leftlight_On;
+          
+        //Green Light
+        uniform vec4 ambient_2,diffuse_2,specular_2;
+        uniform vec4 Light2Pos;
+        uniform float Rightlight_On;
+        
+        // Ambient light intensity
+        uniform float AmbientIntensity;
+        uniform float shininess;
+        
+        //Determine if the target is hit
+        uniform bool uIsFrame;
+        
+        //Pass to fragment shader
+        varying vec4 vColor;
+        varying vec4 vPosition;
+        varying highp vec2 vTexCoord;
+        
+        void main() {
+            
+            vec3 pos = (u_View_Matrix * u_Model_Matrix * vPosition).xyz;
+            vec3 light = Light1Pos.xyz;
+            vec3 light2 = Light2Pos.xyz;
+            vec3 L = normalize( light - pos );
+            vec3 L2 = normalize(light2 - pos);
+
+            vec3 E = normalize( pos );
+
+            vec3 H = normalize( L + E );
+            vec3 H2 = normalize( L2 + E);
+
+            vec4 NN = vec4(aa_Normal,0);
+
+            vec3 N = normalize( (u_View_Matrix * u_Model_Matrix * NN).xyz);
+
+            vec4 ambient = ambient_1;
+            vec4 ambient2 = ambient_2;
+
+            gl_Position = u_Pro_Matrix * u_View_Matrix * u_Model_Matrix * vec4(aPosition, 1.0);
+            float Kd = max( dot(L, N), 0.0 );
+            float Kd2 = max( dot(L2,N), 0.0);
+            vec4  diffuse = Kd * diffuse_1;
+            vec4  diffuse2 = Kd2 * diffuse_2;
+
+            float Ks = pow( max(dot(N, H), 0.0), shininess );
+            float Ks2 = pow( max(dot(N, H2), 0.0), shininess );
+            vec4  specular = Ks * specular_1;
+            vec4  specular2 = Ks * specular_2;
+            if( dot(L, N) < 0.0 ) {
+              specular = vec4(0.0, 0.0, 0.0, 1.0);
+             }
+            if( dot(L2, N) < 0.0 ) {
+              specular2 = vec4(0.0, 0.0, 0.0, 1.0);
+             }
+
+            gl_PointSize = 3.0;
+
+            //Control whether the target is hit
+            if(uIsFrame) {  
+                vColor = aFrameColor;
+            } else {  //Control overall brightness and fogintensity
+                if(Leftlight_On == 1.0 && Rightlight_On == 1.0){
+                vColor =  AmbientIntensity * vec4(vec3(ambient)+vec3(diffuse)+vec3(specular)+vec3(ambient2)+vec3(diffuse2)+vec3(specular2)+aColor.rgb, 1.0) + u_fogintensity * u_fogColor; //float LightStrenth 
+                }else if(Leftlight_On == 1.0 && Rightlight_On == 0.0){
+                vColor = AmbientIntensity * vec4(vec3(ambient)+vec3(diffuse)+vec3(specular)+aColor.rgb, 1.0) + u_fogintensity * u_fogColor;
+                }else if(Leftlight_On == 0.0 && Rightlight_On == 1.0){
+                vColor =AmbientIntensity * vec4(vec3(ambient2)+vec3(diffuse2)+vec3(specular2)+aColor.rgb, 1.0)+ u_fogintensity * u_fogColor;
+                }else{
+                vColor =AmbientIntensity * vec4(aColor.rgb, 1.0) + u_fogintensity *  u_fogColor;
+                }
+            vTexCoord = aTexCoord;    
+          }
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/fragment-shader">
+        precision highp float;
+
+        varying vec4 vColor;
+        varying vec4 vPosition;
+
+        //Texture coordinates
+        varying vec2 vTexCoord;
+        
+        //Declare a texture object
+        uniform sampler2D uImage;
+
+        void main() {
+            gl_FragColor = vColor;
+
+            //calculate texturecolor
+            vec4 textureColor = texture2D(uImage, vTexCoord);
+
+            gl_FragColor = 0.5 * textureColor + vColor;
+        }
+    </script>
+    
+</head>
+<body>
+    <canvas id="mycanvas" width="1200" height="800"></canvas>
+
+
+    <!-- Control interfaces-->
+    <div class="FrontAim"></div>
+    <div class="Team">Team member: Xiang Chen 201992538  Yue Xing 201466372</div>
+    <div class="Mark">Mark:<span id="bgScore">0</span></div>
+    <div class="time">Time: <span id="bgTime">60</span></div>
+    <div class="slider">Lightness(Left/Right)：
+        <font size="3" face="verdana"><b>&nbsp;&nbsp;&nbsp;0%&nbsp;</b></font>
+            <input id="slider0" type="range" min="0" max="1" step="0.25" value="0.5"/>&nbsp; 
+        <font size="3" face="verdana"><b>100%</b></font>
+    </div>
+
+    <div class="slider1">Fog Intensity(Up/Down)：
+        <font size="3" face="verdana"><b>&nbsp;&nbsp;&nbsp;0%&nbsp;</b></font>
+            <input id="slider2" type="range" min="0" max="1" step="0.25" value="0.5"/>&nbsp; 
+        <font size="3" face="verdana"><b>100%</b></font>
+    </div>
+
+    <div class="ButtonL1">Red Light(L)： 
+     <button id = "ButtonL1">
+         <font size="3" face="verdana"><b>Turn on/off</b></font>
+     </button>
+    </div>
+
+    <div class="ButtonL2">Green Light(R)： 
+     <button id = "ButtonL2">
+         <font size="3" face="verdana"><b>Turn on/off</b></font>
+     </button>
+    </div>
+
+    <div class="Forward">Move Forward: W &nbsp;&nbsp;&nbsp;Move Back: S
+    </div>
+    <div class="Back">Move Left: A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Move Right: D
+    </div>
+  
+    <div class="difficulty"><strong>Increase the difficulty:</strong>
+    </div>
+
+    <div class="ButtonL3">Let boxs fly(F)： 
+     <button id = "ButtonL3">
+         <font size="3" face="verdana"><b>Start/Stop</b></font>
+     </button>
+    </div>
+
+    <div class="Note">
+        Please bring your headphones<br>
+        It is recommended to use the Firefox browser<br>
+        enter "about: config" in the address bar, <br>
+        then enter and select "security.fileuri.strict_origin_policy", <br>
+        and set the corresponding parameter to " false "
+
+    </div>
+   
+    <div id="prompt" class="prompt">Level 1</div>
+    <audio id="backgroundMusic1"></audio>
+    <audio id="backgroundMusic2"></audio>
+
+
+    <script>
+        var oC = document.getElementById('mycanvas');
+        var webgl = oC.getContext('webgl');
+
+        var width = oC.width;
+        var height = oC.height;
+
+    </script>
+
+    
+    <script src="./js/gun.js"></script>
+    <script src="./js/walls.js"></script>
+    <script src="./js/box.js"></script>
+    <script src="./js/box2.js"></script>
+    <script src="./js/box3.js"></script>
+    <script src="./js/box4.js"></script>
+    <script src="./js/box5.js"></script>
+    <script src="./js/camera.js"></script>
+    <script src="./js/target.js"></script>
+    <script src="./js/level.js"></script>
+    <script src="./js/bullet.js"></script>
+    <script src="./js/time.js"></script>
+    <script src="./js/sound.js"></script>
+    <script src="./js/score.js"></script>
+
+    <script type="text/javascript" src="./js/webgl-utils.js"></script>
+    <script type="text/javascript" src="./js/initShaders.js"></script>
+    <script type="text/javascript" src="./js/MV.js"></script>
+    <script type="text/javascript" src="./js/geometry.js"></script>
+    <script type="text/javascript" src="./js/matrix.js"></script>
+
+Project-team16.html
+    <script>
+
+        
+        var vsScript = document.getElementById('vertex-shader').innerText;
+        var fsScript = document.getElementById('fragment-shader').innerText;
+     
+        var vs = webgl.createShader(webgl.VERTEX_SHADER);
+        var fs = webgl.createShader(webgl.FRAGMENT_SHADER);
+
+        webgl.shaderSource(vs, vsScript);
+        webgl.shaderSource(fs, fsScript);
+
+        webgl.compileShader(vs);
+        webgl.compileShader(fs);
+
+        if(!webgl.getShaderParameter(vs, webgl.COMPILE_STATUS)) {
+            alert('vs error');
+        }
+        if(!webgl.getShaderParameter(fs, webgl.COMPILE_STATUS)) {
+            alert('fs error');
+        }
+         
+        var program = initShaders(webgl, "vertex-shader", "fragment-shader");
+
+        webgl.attachShader(program, vs);
+        webgl.attachShader(program, fs);
+
+        webgl.linkProgram(program);
+        webgl.useProgram(program);
+
+       
+        //Whether the box rotates and the direction of rotation
+        var theta =[0, 0, 0];
+        var rotating = false;
+
+        
+
+        //All attribute variables
+        var aPosition, aColor, aFrameColor,aTexCoord;
+
+        aPosition = webgl.getAttribLocation(program, 'aPosition');
+        webgl.enableVertexAttribArray(aPosition);
+
+        aColor = webgl.getAttribLocation(program, 'aColor');
+        webgl.enableVertexAttribArray(aColor);
+
+        aFrameColor = webgl.getAttribLocation(program, 'aFrameColor');
+        webgl.disableVertexAttribArray(aFrameColor);
+
+        aTexCoord = webgl.getAttribLocation(program, 'aTexCoord');
+       
+        //Normal to the surface of the object
+        var aaa_Normal = webgl.getAttribLocation(program, "aa_Normal");
+        webgl.vertexAttribPointer( aaa_Normal, 3, webgl.FLOAT, false, 0, 0);
+        webgl.disableVertexAttribArray( aaa_Normal );
+
+        //All uniform variables
+        var u_Pro_Matrix, u_Model_Matrix, u_View_Matrix,uIsFrame,uImage;
+
+        u_Pro_Matrix = webgl.getUniformLocation(program, 'u_Pro_Matrix');
+        u_Model_Matrix = webgl.getUniformLocation(program, 'u_Model_Matrix');
+        u_View_Matrix = webgl.getUniformLocation(program, 'u_View_Matrix');
+        uIsFrame = webgl.getUniformLocation(program, 'uIsFrame');
+        uImage = webgl.getUniformLocation(program, 'uImage');
+        webgl.uniform1i(uImage, 0);
+
+        //Set the intensity and color of the fog
+        var u_fogintensity = 0.0;
+        var FogIntensityLocation;
+        FogIntensityLocation = webgl.getUniformLocation(program,"u_fogintensity");
+        var fogColor = vec4(0.4,0.4,0.5,0.5);
+        var fogColorLocation = webgl.getUniformLocation(program, "u_fogColor");
+
+        //Set the intensity of the ambient light
+        var AmbientIntensity = 0.5;
+        var AmbientIntensityLocation;
+        AmbientIntensityLocation = webgl.getUniformLocation(program,"AmbientIntensity");
+
+        
+        
+        //Left Red light source
+        var left_light_On = true;
+        var Leftlight_On_Loc;
+        var ambient_1;
+        var diffuse_1;
+        var specular_1;
+        var lightAmbient = vec4(0.2, 0.2, 0.2, 1.0);
+        var Light1Pos = [5.0, 0.0, 5.0, 0.0];
+        Leftlight_On_Loc = webgl.getUniformLocation(program,"Leftlight_On");
+        ambient_1 = mult(lightAmbient,vec4( 2.5, 0.0, 0.5, 1.0 ));
+        diffuse_1 = mult(vec4(1.0, 5.0, 0.0, 1.0), vec4( 1.0, 0.8, 0.0, 1.0));
+        specular_1 = mult(vec4(1.0, 1.0, 1.0, 1.0), vec4( 1.0, 0.8, 0.0, 1.0 ));
+        
+        //Right Green light source
+        var right_light_On = false;
+        var Rightlight_On_Loc;
+        var ambient_2;
+        var diffuse_2;
+        var specular_2;
+        var lightAmbient2 = vec4(0.5, 0.4, 0.5, 1.0);
+        var Light2Pos = [-5.0, 0.0, 5.0, 0.0];
+        Rightlight_On_Loc = webgl.getUniformLocation(program,"Rightlight_On");
+        ambient_2 = mult(lightAmbient2, vec4( 0.0, 2.5, 0.5, 1.0 ));
+        diffuse_2 = mult(vec4(1.0, 5.0, 0.0, 1.0), vec4( 1.0, 0.8, 0.0, 1.0));
+        specular_2 = mult(vec4(1.0, 1.0, 1.0, 1.0), vec4( 1.0, 0.8, 0.0, 1.0 ));
+
+        //Keyboard interface    
+        window.addEventListener("keydown", function(){
+          switch(event.keyCode){
+            case 76: //L left red light on/off
+              left_light_On = !left_light_On;
+              break;
+            case 82: //R right green light on/off
+              right_light_On = !right_light_On;
+              break;
+            case 70: //F Boxs fly on/off
+              rotating = !rotating;
+              break;
+            case 37: //<-- AmbientIntensity decrease
+              AmbientIntensity -= 0.25;
+              break;
+            case 39: // --> AmbientIntensity improve
+              AmbientIntensity += 0.25;
+              break;
+            case 38: // UP fog amount improve
+              u_fogintensity += 0.10;
+              break;
+            case 40: // Down fog amount decrease
+              u_fogintensity -= 0.10;
+              break;
+
+          }
+         });
+
+
+        document.getElementById("slider0").onchange = function(event) {
+        AmbientIntensity = event.target.value; };
+        document.getElementById("slider2").onchange = function(event) {
+        u_fogintensity = event.target.value; };
+        document.getElementById("ButtonL1").onclick = function(){left_light_On = !left_light_On;};
+        document.getElementById("ButtonL2").onclick = function(){right_light_On = !right_light_On;};
+        document.getElementById("ButtonL3").onclick = function(){ rotating = !rotating;};
+
+        webgl.uniform4fv(webgl.getUniformLocation(program, "ambient_1"),flatten(ambient_1));
+        webgl.uniform4fv(webgl.getUniformLocation(program, "diffuse_1"), flatten(diffuse_1) );
+        webgl.uniform4fv(webgl.getUniformLocation(program, "specular_1"),flatten(specular_1) );
+        webgl.uniform4fv(webgl.getUniformLocation(program, "Light1Pos"),flatten(Light1Pos) );
+
+
+        webgl.uniform4fv(webgl.getUniformLocation(program, "ambient_2"),flatten(ambient_2));
+        webgl.uniform4fv(webgl.getUniformLocation(program, "diffuse_2"), flatten(diffuse_2) );
+        webgl.uniform4fv(webgl.getUniformLocation(program, "specular_2"),flatten(specular_2) );
+        webgl.uniform4fv(webgl.getUniformLocation(program, "Light2Pos"),flatten(Light2Pos) );
+        webgl.uniform1f(webgl.getUniformLocation(program,"shininess"), 100.0);
+
+        var i, j, a;
+        
+
+        // Set the projection
+        var projection = (function(a, r, n, f) {
+            a = 1 / Math.tan(a * Math.PI / 360);
+
+            return [
+                a/r, 0, 0, 0,
+                0, a, 0, 0,
+                0, 0, -(f+n)/(f-n), -1,
+                0, 0, -2*f*n/(f-n), 0
+            ];
+        })(90, width / height, 0.1, 1000);
+
+        webgl.uniformMatrix4fv(
+            u_Pro_Matrix, false, projection
+        );
+
+        webgl.uniformMatrix4fv(u_View_Matrix, false, [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]);
+
+
+ 
+        //Set the texture
+        var texture = webgl.createTexture();
+
+        webgl.activeTexture(webgl.TEXTURE0);
+        webgl.bindTexture(webgl.TEXTURE_2D, texture);
+        webgl.texImage2D(webgl.TEXTURE_2D, 0, webgl.RGB, width, height, 0, webgl.RGB, webgl.UNSIGNED_BYTE, null);
+
+        var renderbuffer = webgl.createRenderbuffer();
+        webgl.bindRenderbuffer(webgl.RENDERBUFFER, renderbuffer);
+        webgl.renderbufferStorage(webgl.RENDERBUFFER, webgl.DEPTH_COMPONENT16, width, height);
+
+        var framebuffer = webgl.createFramebuffer();
+        webgl.bindFramebuffer(webgl.FRAMEBUFFER, framebuffer);
+
+        webgl.framebufferTexture2D(webgl.FRAMEBUFFER, webgl.COLOR_ATTACHMENT0, webgl.TEXTURE_2D, texture, 0);
+        
+        webgl.framebufferRenderbuffer(webgl.FRAMEBUFFER, webgl.DEPTH_ATTACHMENT, webgl.RENDERBUFFER, renderbuffer);
+
+        webgl.bindTexture(webgl.TEXTURE_2D, null);
+        webgl.bindRenderbuffer(webgl.RENDERBUFFER, null);
+        webgl.bindFramebuffer(webgl.FRAMEBUFFER, null);
+
+        
+        // Draw all objects
+        var gun = Gun(webgl);
+        var walls = Wall(webgl);
+        var box1 = Box1(webgl);
+        var box2 = Box2(webgl);
+        var box3 = Box3(webgl);
+        var box4 = Box4(webgl);
+        var box5 = Box5(webgl);
+        var targets = Target(webgl);
+        var bullet = Bullet(webgl);
+        var boom = false;
+        
+        // level.js  which level 
+        level.init();
+        
+        webgl.clearColor(1, 1, 1, 1.0);
+        webgl.clearDepth(1.0);
+       
+        webgl.enable(webgl.DEPTH_TEST);
+        webgl.depthFunc(webgl.LESS);
+
+        webgl.enable(webgl.BLEND);
+
+
+        var Render = setInterval(
+
+            function() {   
+            webgl.clear(webgl.COLOR_BUFFER_BIT | webgl.DEPTH_BUFFER_BIT);
+        
+            gun.draw();
+            walls.draw();
+            box1.draw();
+            box2.draw();
+            box3.draw();
+            box4.draw();
+            box5.draw();
+            targets.draw();
+            
+            //Set the value of AmbientIntensity 
+            webgl.uniform1f(AmbientIntensityLocation,AmbientIntensity);
+            //Set the value of FogIntensity 
+            webgl.uniform1f(FogIntensityLocation,u_fogintensity);
+            //Set the value of fogColor 
+            webgl.uniform4fv(fogColorLocation, fogColor);
+            //Determine to turn on the light source
+            if(left_light_On){
+                 webgl.uniform1f(Leftlight_On_Loc,1.0); 
+             }else{webgl.uniform1f(Leftlight_On_Loc,0.0);}
+
+            if(right_light_On){
+                 webgl.uniform1f(Rightlight_On_Loc,1.0);
+             }else{webgl.uniform1f(Rightlight_On_Loc,0.0);}
+           
+            if(boom) {
+                bullet.draw();
+            }
+          }, 12);
+
+
+     //Matrix multiplication function
+        function mult( u, v )
+       {
+            var result = [];
+
+            if ( u.matrix && v.matrix ) {
+            if ( u.length != v.length ) {
+            throw "mult(): trying to add matrices of different dimensions";
+           }
+
+            for ( var i = 0; i < u.length; ++i ) {
+            if ( u[i].length != v[i].length ) {
+                throw "mult(): trying to add matrices of different dimensions";
+            }
+           }
+
+            for ( var i = 0; i < u.length; ++i ) {
+            result.push( [] );
+
+            for ( var j = 0; j < v.length; ++j ) {
+                var sum = 0.0;
+                for ( var k = 0; k < u.length; ++k ) {
+                    sum += u[i][k] * v[k][j];
+                }
+                result[i].push( sum );
+            }
+         }
+
+            result.matrix = true;
+
+            return result;
+         }
+
+            if(u.matrix&& (u.length == v.length)) {
+            for(var i = 0; i<v.length; i++) {
+            var sum = 0.0;
+            for(var j=0; j<v.length; j++) {
+            sum += u[i][j]*v[j];
+            }
+            result.push(sum);
+           }
+           return result;
+         }
+ 
+
+
+          else {
+          if ( u.length != v.length ) {
+            throw "mult(): vectors are not the same dimension";
+          }
+
+          for ( var i = 0; i < u.length; ++i ) {
+            result.push( u[i] * v[i] );
+          }
+
+          return result;
+         }
+       }
+
+        function dot3D(A, B) {
+            return A[0] * B[0] + A[1] * B[1] + A[2] * B[2];
+        }
+
+        function normalize3D(A) {
+            var n = Math.sqrt(A[0] * A[0] + A[1] * A[1] + A[2] * A[2]);
+            if(!n)
+                return [0, 0, 0];
+            return [A[0] / n, A[1] / n, A[2] / n];
+        }
+
+        function cross3D(A, B){
+            return [A[1] * B[2] - A[2] * B[1],
+                    A[2] * B[0] - A[0] * B[2],
+                    A[0] * B[1] - A[1] * B[0]];
+        }
+
+        function getAngle(A, B) {
+            if(B[0] === 0 && A[0] === 0) {
+                return 0;
+            }
+
+            var diffX = B[0] - A[0];
+            var diffY = B[1] - A[1];
+
+            var a = A[0] * B[0] + A[1] * B[1];
+            var b = Math.sqrt(A[0] * A[0] + A[1] * A[1]);
+            var c = Math.sqrt(B[0] * B[0] + B[1] * B[1]);
+
+            return (B[0] / Math.abs(B[0])) *  Math.acos(a / b / c);
+        }
+        
+
+       
+        
+    </script>
+
+<!--
+Group:Comp Graphics-16
+Team Member: Xiang Chen 201992538  Yue Xing 201466372
+
+
+Source and Renference
+[1]Original Project: https://github.com/vorshen/simpleFire
+[2]Textbook’s author: https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/06/shadedCube.html
+[3]https://learnopengl.com/index.php?p=Lighting/Basic-Lighting (Learn how to affect the overall brightness of ambient light by setting the ambient light intensity coefficient.)
+[4]WebGL Fog:https://webglfundamentals.org/webgl/lessons/webgl-fog.html
+[5]Function loadTexture taken from: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL
+
+This project is a first-person shooter game developed using WebGL. 
+
+The main functions of this game are as follows:
+1. Navigate by mouse movement and keyboard keys, click the left mouse button to shoot the moving target.
+2. Clicking the left mouse button will produce the sound effect of shooting.
+3. Display of current score and time.
+4. All objects in the scene have been added textures, such as the wall and the surface of the gun are posted with pictures.
+5. The two light sources can be manipulated by keyboard keys and effective interfaces. Players can switch the color, position, and intensity of the light source separately.
+6. The effect of fog is added. Players can control the intensity of fog in the scene through keyboard keys and effective interfaces.
+7. Walls and obstacles (boxes) are added to the scene to increase the difficulty of the game. Players can control whether the box moves through keyboard keys and an effective interface.
+8. The number of targets and moving speed at different levels are different.
+
+How to run the project
+Please use sublime-text or other HTML editor to open the "source code-Final project" folder, run the "Project-team16.html", all necessary js, CSS files should be located in the "js" folder, all audio effect mp3 files needed to load the game are located in the "music" folder.(Please bring headphones to experience the sounds in the game.)
+Please note: This project needs to load texture images locally. When you use the Firefox browser, enter “about: config” in the address bar, then enter and select “security.fileuri.strict_origin_policy”, and set the corresponding parameter to “false”. It is recommended to use the Firefox browser, the operation is relatively simple and can effectively load local images to display the project effect.
+
+
+Game operations and effects
+The user can control the relative position of the gun through the mouse and W, A, S, D keyboard keys to complete the navigation. Point at the target and click the left mouse button to shoot. Different levels and different speeds of targets will appear on different walls.  "Mark" shows the number of targets hit, "Time" shows the remaining time. The user can control the two corresponding lights to turn on or off through the keyboard keys "L" "R", and control the intensity of the lights through the left and right keys. Different light sources correspond to different colors, the left light source corresponds to red, and the right light source corresponds to green. By default, the red light is turned on. When the two lights are turned on at the same time, the scene light is displayed as yellow. 
+Besides, users can also use the up and down buttons to control the fog density in the scene. The up button corresponds to an increase, and the down button corresponds to a decrease. The obstacle-box in the scene can also move, and the keyboard button F controls whether the box moves. All the above functions can be controlled through the effective interface and keyboard keys.
+
+
+Novel Component
+1.Sound loading
+All sound files are stored in the “music” folder in mp3 format, corresponding to the sound of the shot and the prompt sound. We Defined a function called “callback” in the “sound.js” file to call each audio file in sequence to produce the corresponding game effect.
+2.Fog effect
+We are inspired by a basic equation: gl_FragColor = mix (originalColor, fogColor, fogAmount); Where fogAmount is a value from 0 to 1.The mix function mixes the originalColor and fogColor. When fogAmount is 0 mix returns originalColor. Then fogAmount is 1 mix returns fogColor. In between 0 and 1 we can get a percentage of both colors. In this project, an alternative equation for mix is applied: gl_FragColor = originalColor + (fogColor-originalColor) * fogAmount; u_fogintensity corresponds to fogAmount, and textureColor + vColor corresponds to originalColor. Finally, the user can control the density of the fog through the Up and Down. The effect of the fog is that the color of all objects in the scene becomes lighter.
+3.Collision detection between objects
+The effect of the bullet hitting the target is mainly achieved through collision detection. We created the framebuffer object “framebuffer”, and read the RGBA value of each point in the framebuffer to determine whether the corresponding point is located on the target, thus implementing coordinate collision detection. The above is mainly implemented in the check function in target.js.
+
+
+-->
+
+
+</body>
+</html>
