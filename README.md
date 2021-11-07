@@ -1,4 +1,4 @@
-Final Project
+3D Graphic Group Final Project
 
 
 Please use sublime-text or other HTML editor to open the "Source Code-Final Project" folder, run the "Project-team16.html",
