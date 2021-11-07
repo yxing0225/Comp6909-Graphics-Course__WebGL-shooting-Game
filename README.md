@@ -2,6 +2,7 @@ Final Project
 
 
 Please use sublime-text or other HTML editor to open the "Source Code-Final Project" folder, run the "Project-team16.html",
+![捕获](https://user-images.githubusercontent.com/60112459/140650813-ef187b42-486d-4e67-af61-54aa512f52ad.PNG)
 
 
 all necessary js, CSS files should be located in the "js" folder, all audio effect mp3 files needed to load the game are located in the "music" folder.
